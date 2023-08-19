@@ -1,0 +1,52 @@
+﻿<Window x:Class="myVid.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:myVid"
+        Title="myVid Database" Height="400" Width="600">
+    <Window.Resources>
+        <Style x:Key="WatermarkTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Foreground" Value="Black"/>
+            <Style.Triggers>
+                <Trigger Property="Text" Value="">
+                    <Setter Property="Foreground" Value="Gray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Search Bar -->
+            <RowDefinition Height="*"/>
+            <!-- Media List -->
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
+            <TextBox Name="searchTextBox" Width="150" VerticalAlignment="Center"
+                     Style="{StaticResource WatermarkTextBoxStyle}">
+                <i:Interaction.Behaviors>
+                    <local:WatermarkBehavior Watermark="Search media files..."/>
+                </i:Interaction.Behaviors>
+            </TextBox>
+            <Button Content="Search" Click="SearchButton_Click" Margin="5,0,0,0"/>
+            <Button Content="Back to List" Click="BackToListButton_Click" Margin="5,0,0,0"/>
+            <Button Content="Delete Selected" Click="DeleteSelectedButton_Click" HorizontalAlignment="Right" Margin="10"/>
+            <Button Content="Clear List" Click="ClearListButton_Click" HorizontalAlignment="Right" Margin="5,0"/>
+        </StackPanel>
+
+        <ListBox Name="mediaListBox" Grid.Row="1" AllowDrop="True" Drop="MediaListBox_Drop"
+         Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <EventSetter Event="MouseDoubleClick" Handler="MediaListBoxItem_DoubleClick"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
