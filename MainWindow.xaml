@@ -9,7 +9,7 @@
             <Setter Property="Foreground" Value="Black"/>
             <Style.Triggers>
                 <Trigger Property="Text" Value="">
-                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Foreground" Value="DarkOliveGreen"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -22,21 +22,21 @@
             <!-- Media List -->
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10" Background="SeaGreen">
             <TextBox Name="searchTextBox" Width="150" VerticalAlignment="Center"
                      Style="{StaticResource WatermarkTextBoxStyle}">
                 <i:Interaction.Behaviors>
                     <local:WatermarkBehavior Watermark="Search media files..."/>
                 </i:Interaction.Behaviors>
             </TextBox>
-            <Button Content="Search" Click="SearchButton_Click" Margin="5,0,0,0"/>
-            <Button Content="Back to List" Click="BackToListButton_Click" Margin="5,0,0,0"/>
-            <Button Content="Delete Selected" Click="DeleteSelectedButton_Click" HorizontalAlignment="Right" Margin="10"/>
-            <Button Content="Clear List" Click="ClearListButton_Click" HorizontalAlignment="Right" Margin="5,0"/>
+            <Button Content="Search" Click="SearchButton_Click" Margin="10" Height="25" Background="DarkSeaGreen"/>
+            <Button Content="Back to List" Click="BackToListButton_Click" Margin="10" Height="25" Background="DarkSeaGreen"/>
+            <Button Content="Delete Selected" Click="DeleteSelectedButton_Click" HorizontalAlignment="Right" Background="DarkSeaGreen" Margin="10" Height="25"/>
+            <Button Content="Clear List" Click="ClearListButton_Click" HorizontalAlignment="Right" Margin="10" Height="25" Background="DarkSeaGreen"/>
         </StackPanel>
 
         <ListBox Name="mediaListBox" Grid.Row="1" AllowDrop="True" Drop="MediaListBox_Drop"
-         Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+         Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="SeaGreen">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <EventSetter Event="MouseDoubleClick" Handler="MediaListBoxItem_DoubleClick"/>
